@@ -10,9 +10,9 @@ mongoose.connect(
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false
-    }
+    })
     .then(() => console.log("Database Connected Successfully"))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)
 );
 
 module.exports = mongoose.connection;
