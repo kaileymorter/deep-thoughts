@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
 
-  const [login, { error }] = useMutation(LOGIN_USER)
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -19,25 +19,17 @@ const Login = (props) => {
   };
 
   // submit form
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
 
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
-
-    //use try/catch instead of promises to handle errors
     try {
-      //execute login mutation and pass in variable data from form
       const { data } = await login({
-        variables: {...formState}
+        variables: { ...formState }
       });
-      
+    
       Auth.login(data.login.token);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   };
 
